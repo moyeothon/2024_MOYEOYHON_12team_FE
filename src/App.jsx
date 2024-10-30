@@ -1,13 +1,13 @@
 import { useState } from 'react'
 import { BrowserRouter as Router } from 'react-router-dom';
 import AppRouter from './router';
+import GlobalStyles from '@/styles/GlobalStyles'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <>
-      App.jsx
+    <GlobalStyles />
       <Router>
         <AppRouter />
       </Router>
