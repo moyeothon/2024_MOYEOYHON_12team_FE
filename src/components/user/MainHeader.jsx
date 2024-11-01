@@ -2,7 +2,6 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import * as MHe from '@/styles/MainHeaderStyle';
 import Logo from '@/assets/LOGO.png';
-import HomeIcon from '@/assets/Home.png'; 
 
 const MainHeader = () => {
     const navigate = useNavigate();

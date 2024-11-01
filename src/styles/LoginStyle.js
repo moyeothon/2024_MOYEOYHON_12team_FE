@@ -24,6 +24,7 @@ export const Form = styled.form`
 `;
 
 export const Title = styled.label`
+    font-family: "Baloo 2", sans-serif;
     font-size: 1.5rem;
     font-weight: bold;
     color: #333333;
@@ -32,7 +33,7 @@ export const Title = styled.label`
 
 export const LabelContainer = styled.div`
     display: flex;
-    align-items: flex-start; /* 세로 정렬을 위로 조정 */
+    align-items: flex-start;
     gap: 50px;
     margin-bottom: 50px
 `;
@@ -61,8 +62,8 @@ export const FireIconWrapper = styled.div`
     justify-content: center;  
 
     img {
-        width: 300px;  /* 아이콘 크기를 줄여 원 안에 들어가도록 조정 */
-        height: 300px;  /* 아이콘 크기를 줄여 원 안에 들어가도록 조정 */
+        width: 300px;  
+        height: 300px;  
         margin-right: 50px;
         margin-bottom: 100px;
         }
@@ -93,7 +94,7 @@ export const Button = styled.button`
     border-radius: 10px;
     font-size: 1rem;
     cursor: pointer;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.2);
 
     &:hover {
         background-color: #f0f0f0;
@@ -101,7 +102,6 @@ export const Button = styled.button`
 `;
 
 export const Message = styled.div`
-    margin-top: 15px;
     font-size: 1rem;
     color: #333333;
     font-weight: bold;

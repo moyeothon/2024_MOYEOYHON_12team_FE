@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import RuleCard from '../RuleCard';
 import * as L from '@/styles/LoginStyle';
-import * as R from '@/styles/RuleStyle';
 import FireIcon from '../../assets/icons/Fire.svg';
 
 const Login = () => {
@@ -51,7 +49,7 @@ const Login = () => {
                             type="text"
                             value={nickname}
                             onChange={handleInputChange}
-                            placeholder="닉네임 입력"
+                            placeholder="닉네임을 입력해주세요."
                         />
                     </L.NicknameContainer>
                 </L.LabelContainer>
