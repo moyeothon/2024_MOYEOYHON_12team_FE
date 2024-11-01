@@ -8,16 +8,25 @@ export const Home = styled.div`
     height: 100vh;
     padding: 10%;
 
-    background-color : #686868;
+    /* background-color : #686868; */
 `
 
 export const Tab = styled.div`
     display : flex;
-    width: 80vw;
-    height: 100%;
+    flex-direction: column;
+    min-width: 1200px;
+    height: 750px;
     justify-content: center;
     align-items: center;
 
-    border-radius: 20px;
-    background-color : #A99978;
+    gap: 50px;
+
+    border-radius: 10px;
+    background-color : #C3B18D;
+`
+
+export const RowBox = styled.div`
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
 `

@@ -3,4 +3,5 @@
 설치 필요한 패키지 <br/>
 npm install react-router-dom <br/>
 npm install styled-components <br/>
+npm install socket.io-client <br/>
 

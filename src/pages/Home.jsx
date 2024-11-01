@@ -1,18 +1,25 @@
 import React from 'react';
 import * as H from '@/styles/HomeStyle';
+import ChatApp from '@/components/ChatApp'
+import Header from '@/components/Header'
+import RuleCard from '@/components/RuleCard';
 
-const Home = ({}) => {
+const Home = ({ }) => {
 
 
-    return (
-        <>
-         <H.Home>
-            <H.Tab>
-              홈입니다
-            </H.Tab>
-         </H.Home>
-        </>
-    )
-} 
+  return (
+    <>
+      <H.Home>
+        <H.Tab>
+          <Header />
+          <H.RowBox>
+            <RuleCard />
+            <ChatApp />
+          </H.RowBox>
+        </H.Tab>
+      </H.Home>
+    </>
+  )
+}
 
 export default Home;
