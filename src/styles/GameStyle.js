@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Home = styled.div`
+export const Game = styled.div`
     display : flex;
     justify-content: center;
     align-items: center;
