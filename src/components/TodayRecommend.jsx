@@ -12,9 +12,16 @@ const TodayRecommend = () => {
     const [recommendations, setRecommendations] = useState('');
 
     useEffect(() => {
+        // Kakao SDK 초기화
+        if (!window.Kakao.isInitialized()) {
+            window.Kakao.init('635e60000786c762c9ceca1cc7248e06'); 
+        }
+    }, []);
+
+    useEffect(() => {
         const timer = setTimeout(() => {
-            navigate('/recommendation', { state: { nickname } }); 
-        }, 5000); 
+            navigate('/recommendation', { state: { nickname } });
+        }, 5000);
 
         return () => clearTimeout(timer);
     }, [navigate, nickname]);
@@ -48,6 +55,17 @@ const TodayRecommend = () => {
         fetchRecommendations();
     }, []);
 
+    const shareToKakao = () => {
+        window.Kakao.Share.sendDefault({
+            objectType: 'text',
+            text: `오늘의 추천: ${recommendations}`,
+            link: {
+                webUrl: window.location.href,
+                mobileWebUrl: window.location.href,
+            },
+        });
+    };
+
     return (
         <T.LoginContainer>
             <T.TodayRecommendContainer>
@@ -63,13 +81,13 @@ const TodayRecommend = () => {
                 ))}
             </T.RecommendationsContainer>
             <T.ButtonContainer>
-                <T.Button type="button" >
+                <T.Button type="button" onClick={() => navigate('/main')}>
                     <img src={HomeIcon} alt="홈 아이콘" /> 홈
                 </T.Button>
-                <T.Button type="button">
+                <T.Button type="button" onClick={() => navigate('/game')}>
                     <img src={StartIcon} alt="다시 아이콘" /> 다시
                 </T.Button>
-                <T.Button type="button">
+                <T.Button type="button" onClick={shareToKakao}>
                     <img src={ShareIcon} alt="공유 아이콘" /> 공유
                 </T.Button>
             </T.ButtonContainer>
