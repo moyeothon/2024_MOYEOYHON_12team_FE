@@ -5,6 +5,7 @@ import SockJS from 'sockjs-client';
 import * as C from '@/styles/ChatStyle';
 import Congrats from '@/components/Congrats';
 import Send from '@/assets/send.png';
+import TextAni from '@/assets/Messeage_ani.json';
 
 function ChatApp() {
   const [messages, setMessages] = useState([]);
