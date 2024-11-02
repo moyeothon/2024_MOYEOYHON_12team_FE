@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Stomp } from '@stomp/stompjs';
 import SockJS from 'sockjs-client';
 import * as C from '@/styles/ChatStyle';
@@ -10,6 +11,7 @@ function ChatApp() {
   const [message, setMessage] = useState('');
   const [isCelebrating, setIsCelebrating] = useState(false);
   const stompClient = useRef(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     // SockJS 인스턴스를 생성하고 올바르게 설정

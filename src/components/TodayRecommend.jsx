@@ -81,7 +81,7 @@ const TodayRecommend = () => {
                 ))}
             </T.RecommendationsContainer>
             <T.ButtonContainer>
-                <T.Button type="button" onClick={() => navigate('/main')}>
+                <T.Button type="button" onClick={() => navigate('/')}>
                     <img src={HomeIcon} alt="홈 아이콘" /> 홈
                 </T.Button>
                 <T.Button type="button" onClick={() => navigate('/game')}>
