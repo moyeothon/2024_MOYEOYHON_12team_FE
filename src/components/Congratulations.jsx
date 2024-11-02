@@ -1,12 +1,21 @@
 // Congratulations.js
-import React from 'react';
+import React, { useEffect } from 'react';
 import * as C from '@/styles/CongratulationsStyle';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import CongratulationsIcon from "../assets/icons/Congratulations.svg";
 
 const Congratulations = () => {
     const location = useLocation();
+    const navigate = useNavigate();
     const { nickname } = location.state || {};
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            navigate('/recommendation', { state: { nickname } }); // nickname을 전달
+        }, 5000); 
+
+        return () => clearTimeout(timer); // 컴포넌트 언마운트 시 타이머 클리어
+    }, [navigate, nickname]);
 
     return (
         <C.LoginContainer>
