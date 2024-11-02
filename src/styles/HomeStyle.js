@@ -4,9 +4,9 @@ export const Home = styled.div`
     display : flex;
     justify-content: center;
     align-items: center;
-
     height: 100vh;
     padding: 10%;
+    border: 5px solid #A99978;
 `
 
 export const Home2 = styled.div`

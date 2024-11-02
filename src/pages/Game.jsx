@@ -3,6 +3,7 @@ import * as H from '@/styles/HomeStyle';
 import ChatApp from '@/components/ChatApp'
 import Header from '@/components/Header'
 import RuleCard from '@/components/RuleCard';
+import Bookmark from '@/components/Bookmark';
 
 const Game = ({ }) => {
 
@@ -10,10 +11,10 @@ const Game = ({ }) => {
   return (
     <>
       <H.Home>
+        <Bookmark />
         <H.Tab>
           <Header />
           <H.RowBox>
-            <RuleCard />
             <ChatApp />
           </H.RowBox>
         </H.Tab>

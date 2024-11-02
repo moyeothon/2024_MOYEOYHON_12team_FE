@@ -6,6 +6,7 @@ export const RuleCard = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
+    box-shadow: 0px 5px 1px rgba(0, 0, 0, 0.2);
     
     padding: 30px 30px;
     gap: 20px;
