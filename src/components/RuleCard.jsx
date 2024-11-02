@@ -47,7 +47,6 @@ const RuleCard = () => {
       prevRule === 0 ? ruleData.length - 1 : prevRule - 1
     );
   };
-  currentRule(currentRule
 
   const { img, title, description } = ruleData[currentRule];
 
