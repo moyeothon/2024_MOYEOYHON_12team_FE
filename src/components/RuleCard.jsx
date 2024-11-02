@@ -36,16 +36,18 @@ const ruleData = [
 
 const RuleCard = () => {
   const [currentRule, setCurrentRule] = useState(0);
-
+  
   const handleNext = () => {
     setCurrentRule((prevRule) => (prevRule + 1) % ruleData.length);
   };
+  console.log(currentRule);
 
   const handlePrev = () => {
     setCurrentRule((prevRule) =>
       prevRule === 0 ? ruleData.length - 1 : prevRule - 1
     );
   };
+  currentRule(currentRule
 
   const { img, title, description } = ruleData[currentRule];
 
@@ -57,6 +59,7 @@ const RuleCard = () => {
       <p>{description}</p>
       <div>
         <button onClick={handlePrev}>이전</button>
+        현재 룰북 /{ruleData.length}
         <button onClick={handleNext}>다음</button>
       </div>
     </R.RuleCard>
