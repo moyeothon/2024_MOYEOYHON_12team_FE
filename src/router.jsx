@@ -6,6 +6,7 @@ import Recommendation from './pages/Recommendation';
 
 
 const AppRouter = ({ }) => {
+    
     return (
         <Routes>
             <Route path='/' element={<Home/>} />
