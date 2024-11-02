@@ -1,70 +1,54 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import * as L from '@/styles/LoginStyle';
-import { useNavigate } from 'react-router-dom';
-import FireIcon from '../../assets/icons/Fire.svg';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 const Login = () => {
     const [nickname, setNickname] = useState('');
     const [message, setMessage] = useState('');
+    const [isJoining, setIsJoining] = useState(false);
     const navigate = useNavigate();
+    const location = useLocation();
 
-    const handleInputChange = (e) => {
-        setNickname(e.target.value);
-    };
+    useEffect(() => {
+        // URL 파라미터에 roomId가 있는지 확인하여 참가/생성 구분
+        const searchParams = new URLSearchParams(location.search);
+        setIsJoining(searchParams.has('roomId'));
+    }, [location.search]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        try {
-            const response = await axios.post('http://localhost:5000/userSignUp', { 
-                nickname: nickname,
-            });
-
-            // 성공적인 응답 처리
-            if (response.status === 201 && response.data.code === 201) {
-                setMessage(response.data.message);
-                navigate('/correct');
-            }
-        } catch (error) {
-            console.error('Error:', error);
-            // 에러 메시지 개선
-            if (error.response) {
-                setMessage(error.response.data.message || '닉네임 설정에 실패했습니다. 다시 시도해 주세요.');
-            } else {
-                setMessage('서버와의 연결에 실패했습니다. 나중에 다시 시도해 주세요.');
-                navigate('/correct', { replace: true });
-
+        if (isJoining) {
+            // 참가하기 로직
+            navigate(`/waiting?roomId=${searchParams.get('roomId')}&nickname=${nickname}`);
+        } else {
+            // 방만들기 로직
+            try {
+                const response = await axios.post('http://localhost:5000/createRoom', { nickname });
+                if (response.status === 201) {
+                    navigate(`/waiting?roomId=${response.data.roomId}&nickname=${nickname}&isHost=true`);
+                }
+            } catch (error) {
+                setMessage('방 만들기에 실패했습니다. 다시 시도해 주세요.');
             }
         }
     };
 
     return (
-        <>
         <L.LoginContainer>
             <L.Form onSubmit={handleSubmit}>
-                <L.Title>게임을 만들어보세요</L.Title>
-                {/* 방에 참여하도록 초대되었습니다! */}
-                <L.LabelContainer>
-                    <L.FireIconWrapper>
-                       
-                    </L.FireIconWrapper>
-                    <L.NicknameContainer>
-                        <L.Label>닉네임 선택</L.Label>
-                        <L.Input
-                            type="text"
-                            value={nickname}
-                            onChange={handleInputChange}
-                            placeholder="닉네임을 입력해주세요."
-                        />
-                    </L.NicknameContainer>
-                </L.LabelContainer>
-                <L.Button type="submit">방만들기</L.Button>
-                {/* 참가하기 */}
+                <L.Title>{isJoining ? '방에 참가하기' : '게임을 만들어보세요'}</L.Title>
+                <L.Input
+                    type="text"
+                    value={nickname}
+                    onChange={(e) => setNickname(e.target.value)}
+                    placeholder="닉네임을 입력해주세요."
+                />
+                <L.Button type="submit">{isJoining ? '참가하기' : '방 만들기'}</L.Button>
             </L.Form>
             {message && <L.Message>{message}</L.Message>}
         </L.LoginContainer>
-        </>
     );
 };
 
