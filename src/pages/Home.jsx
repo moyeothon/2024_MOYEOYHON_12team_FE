@@ -3,6 +3,7 @@ import MainHeader from '@/components/user/MainHeader'
 import Login from '@/components/user/Login';
 import RuleCard from '@/components/RuleCard';
 import * as H from '@/styles/HomeStyle';
+import Bookmark from '@/components/Bookmark';
 
 const Main = ({ }) => {
 
@@ -10,6 +11,7 @@ const Main = ({ }) => {
   return (
     <>
       <H.Home>
+        <Bookmark />
         <H.Tab>
           <MainHeader />
           <H.RowBox>
