@@ -1,32 +1,46 @@
-import React, { useState, useEffect } from 'react';
-import io from 'socket.io-client';
-import * as C from '@/styles/ChatStyle'
-import Congrats from '@/components/Congrats'
-import Send from '@/assets/send.png'
-
-// 서버 주소에 연결 (서버가 로컬에서 5000번 포트에서 실행 중)
-const socket = io('http://localhost:5000');
+import React, { useState, useEffect, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { Stomp } from '@stomp/stompjs';
+import SockJS from 'sockjs-client';
+import * as C from '@/styles/ChatStyle';
+import Congrats from '@/components/Congrats';
+import Send from '@/assets/send.png';
 
 function ChatApp() {
-  const [messages, setMessages] = useState([]); // 모든 메시지를 저장
-  const [message, setMessage] = useState('');   // 입력 필드 메시지 저장
+  const [messages, setMessages] = useState([]);
+  const [message, setMessage] = useState('');
   const [isCelebrating, setIsCelebrating] = useState(false);
+  const stompClient = useRef(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    // 'chat message' 이벤트를 받아서 화면에 표시
-    socket.on('chat message', (msg) => {
-      setMessages((prevMessages) => [...prevMessages, msg]);
+    // SockJS 인스턴스를 생성하고 올바르게 설정
+    const socket = new SockJS(`${process.env.REACT_APP_SOCKET_URL}/ws-stomp`);
+    stompClient.current = Stomp.over(socket);
+
+    stompClient.current.connect({}, () => {
+      // 연결 성공 시 '/topic/chat/message' 구독
+      stompClient.current.subscribe('/sub/chat/message', (msg) => {
+        const receivedMessage = JSON.parse(msg.body);
+        setMessages((prevMessages) => [...prevMessages, receivedMessage]);
+      });
+    }, (error) => {
+      console.error('Connection error', error);
     });
 
-    // 컴포넌트가 제거될 때 이벤트 제거
-    return () => socket.off('chat message');
+    // 컴포넌트가 제거될 때 연결 해제
+    return () => {
+      if (stompClient.current) {
+        stompClient.current.disconnect();
+      }
+    };
   }, []);
 
   const sendMessage = (e) => {
     e.preventDefault();
-    if (message) {
-      socket.emit('chat message', message); // 입력한 메시지를 서버로 보냄
-      setMessage(''); // 전송 후 입력창 초기화
+    if (message.trim() && stompClient.current) {
+      stompClient.current.send('/pub/chat/message', {}, JSON.stringify({ content: message }));
+      setMessage('');
     }
   };
 
@@ -36,13 +50,14 @@ function ChatApp() {
 
   const handleCloseCelebrate = () => {
     setIsCelebrating(false);
+    navigate('/recommendation')
   };
 
   return (
     <C.ChatApp>
       <C.ChatBox>
         {messages.map((msg, index) => (
-          <C.textBox key={index}>{msg}</C.textBox>
+          <C.textBox key={index}>{msg.content}</C.textBox>
         ))}
       </C.ChatBox>
       <C.SearchBar>
@@ -54,10 +69,10 @@ function ChatApp() {
             placeholder="질문을 입력해주세요"
           />
           <C.SubmitBtn type="submit">
-            <img src={Send} />
+            <img src={Send} alt="메시지 전송" />
           </C.SubmitBtn>
           <C.CongratsBtn onClick={handleCelebrate}>
-              정답!
+            정답!
           </C.CongratsBtn>
         </form>
       </C.SearchBar>
