@@ -11,7 +11,7 @@ export const StyledBox1 = styled.button`
     background-color: #A99978; 
     border-radius: 10px 0 0 10px;
     border: 1px solid #A99978;
-    margin-top: -480px
+    margin-top: -460px
 `;
 
 export const StyledBox2 = styled.button`

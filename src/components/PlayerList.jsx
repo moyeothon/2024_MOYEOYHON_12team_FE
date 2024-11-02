@@ -31,7 +31,7 @@ const PlayerList = ({ isHost }) => {
                 ))}
             </P.List>
             <P.BottomDiv>
-                <P.Title2>2/6</P.Title2>
+                <P.Title2>4/6</P.Title2>
             </P.BottomDiv>
             {isHost && <P.InviteButton>초대하기</P.InviteButton>}
         </P.Container>

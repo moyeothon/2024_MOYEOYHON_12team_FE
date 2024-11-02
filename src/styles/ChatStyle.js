@@ -5,7 +5,7 @@ export const ChatApp = styled.div`
     display: flex;
     flex-direction: column;
 
-    width: 770px;
+    width: 700px;
     height: 520px;
 
     border-radius: 10px;

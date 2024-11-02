@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
 export const LoginContainer = styled.div`
-    width: 610px;
-    height: 490px;
+    width: 665px;
+    height: 523px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -94,18 +94,18 @@ export const Button = styled.button`
     box-shadow: 0px 5px 1px rgba(0, 0, 0, 0.2);
     display: flex; 
     align-items: center; 
-    justify-content: flex-start;
+    justify-content: center; 
     background-color: #ffffff;
-    padding-left: 10px; 
-
 
     &:hover {
         background-color: #C3B18D;
     }
 
     img {
-        margin-right: 50px; 
-    }
+        width: 30px;  
+        height: 30px;  
+        margin-right: 10px;
+        }
 `;
 
 export const Message = styled.div`
