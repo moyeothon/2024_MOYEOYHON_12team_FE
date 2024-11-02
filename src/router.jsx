@@ -7,6 +7,7 @@ import Confirm from './pages/Confirm';
 
 
 const AppRouter = ({ }) => {
+    
     return (
         <Routes>
             <Route path='/' element={<Home/>} />

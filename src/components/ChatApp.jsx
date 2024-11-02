@@ -6,6 +6,7 @@ import * as C from '@/styles/ChatStyle';
 import Congrats from '@/components/Congrats';
 import Send from '@/assets/send.png';
 
+
 function ChatApp() {
   const [messages, setMessages] = useState([]);
   const [message, setMessage] = useState('');
