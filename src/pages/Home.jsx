@@ -1,20 +1,20 @@
 import React from 'react';
-import * as H from '@/styles/HomeStyle';
-import ChatApp from '@/components/ChatApp'
-import Header from '@/components/Header'
+import MainHeader from '@/components/user/MainHeader'
+import Login from '@/components/user/Login';
 import RuleCard from '@/components/RuleCard';
+import * as H from '@/styles/HomeStyle';
 
-const Home = ({ }) => {
+const Main = ({ }) => {
 
 
   return (
     <>
       <H.Home>
         <H.Tab>
-          <Header />
+          <MainHeader />
           <H.RowBox>
+            <Login />
             <RuleCard />
-            <ChatApp />
           </H.RowBox>
         </H.Tab>
       </H.Home>
@@ -22,4 +22,4 @@ const Home = ({ }) => {
   )
 }
 
-export default Home;
+export default Main;

@@ -43,7 +43,8 @@ const Login = () => {
         <>
         <L.LoginContainer>
             <L.Form onSubmit={handleSubmit}>
-                <L.Title>방에 참여하도록 초대되었습니다!</L.Title>
+                <L.Title>게임을 만들어보세요</L.Title>
+                {/* 방에 참여하도록 초대되었습니다! */}
                 <L.LabelContainer>
                     <L.FireIconWrapper>
                        
@@ -58,7 +59,8 @@ const Login = () => {
                         />
                     </L.NicknameContainer>
                 </L.LabelContainer>
-                <L.Button type="submit">가입</L.Button>
+                <L.Button type="submit">방만들기</L.Button>
+                {/* 참가하기 */}
             </L.Form>
             {message && <L.Message>{message}</L.Message>}
         </L.LoginContainer>
