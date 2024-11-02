@@ -6,17 +6,28 @@ import StartIcon from "../assets/icons/Start.svg";
 import ShareIcon from "../assets/icons/Share.svg";
 
 const TodayRecommend = () => {
+    const realUrl = "https://2024-moyeoyhon-12team-fe.vercel.app/";
+
+    const shareContent = {
+        title: '오늘의 추천',
+        text: '아메리카노, 빵, 케익 등 오늘의 디저트를 확인해보세요!',
+        url: realUrl
+    };
+
+    const share = () => {
+        if (navigator.share) {
+            navigator.share(shareContent)
+                .then(() => console.log('공유 성공!'))
+                .catch((error) => console.error('공유 실패:', error));
+        } else {
+            alert('이 기기에서는 공유 기능을 지원하지 않습니다.');
+        }
+    };
+
     const location = useLocation();
     const navigate = useNavigate();
     const { nickname } = location.state || {};
     const [recommendations, setRecommendations] = useState('');
-
-    useEffect(() => {
-        // Kakao SDK 초기화
-        if (!window.Kakao.isInitialized()) {
-            window.Kakao.init('635e60000786c762c9ceca1cc7248e06'); 
-        }
-    }, []);
 
     useEffect(() => {
         const timer = setTimeout(() => {
@@ -55,17 +66,6 @@ const TodayRecommend = () => {
         fetchRecommendations();
     }, []);
 
-    const shareToKakao = () => {
-        window.Kakao.Share.sendDefault({
-            objectType: 'text',
-            text: `오늘의 추천: ${recommendations}`,
-            link: {
-                webUrl: window.location.href,
-                mobileWebUrl: window.location.href,
-            },
-        });
-    };
-
     return (
         <T.LoginContainer>
             <T.TodayRecommendContainer>
@@ -81,13 +81,13 @@ const TodayRecommend = () => {
                 ))}
             </T.RecommendationsContainer>
             <T.ButtonContainer>
-                <T.Button type="button" onClick={() => navigate('/main')}>
+                <T.Button type="button" onClick={() => navigate('/')}>
                     <img src={HomeIcon} alt="홈 아이콘" /> 홈
                 </T.Button>
                 <T.Button type="button" onClick={() => navigate('/game')}>
                     <img src={StartIcon} alt="다시 아이콘" /> 다시
                 </T.Button>
-                <T.Button type="button" onClick={shareToKakao}>
+                <T.Button type="button" onClick={share}>
                     <img src={ShareIcon} alt="공유 아이콘" /> 공유
                 </T.Button>
             </T.ButtonContainer>
