@@ -7,7 +7,7 @@ import { useLocation } from 'react-router-dom';
 
 const Recommendation = () => {
     const location = useLocation();
-    const { nickname } = location.state || {}; // nickname을 가져옴
+    const { nickname } = location.state || {};
 
     return (
         <>

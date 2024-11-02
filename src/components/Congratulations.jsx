@@ -11,10 +11,10 @@ const Congratulations = () => {
 
     useEffect(() => {
         const timer = setTimeout(() => {
-            navigate('/recommendation', { state: { nickname } }); // nickname을 전달
+            navigate('/recommendation', { state: { nickname } });
         }, 5000); 
 
-        return () => clearTimeout(timer); // 컴포넌트 언마운트 시 타이머 클리어
+        return () => clearTimeout(timer); 
     }, [navigate, nickname]);
 
     return (
@@ -26,7 +26,7 @@ const Congratulations = () => {
                    {/* <img src={CongratulationsIcon} alt="Congratulations Icon" /> */ }
                 </C.FireIconWrapper>
                 
-                <C.Message>{nickname ? `${nickname}님` : '님'}</C.Message>
+                <C.Message>{nickname ? `${nickname}` : '님'}</C.Message>
             </C.CongratulationsContainer>
         </C.LoginContainer>
     );

@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import * as C from '@/styles/CongratulationsStyle';
+import * as T from '@/styles/TodayRecommend';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 const TodayRecommend = () => {
@@ -16,13 +16,13 @@ const TodayRecommend = () => {
     }, [navigate, nickname]);
 
     return (
-        <C.LoginContainer>
-            <C.CongratulationsContainer>
-                <C.Title>오늘의 추천</C.Title>
-                
-                <C.Message>{nickname ? `${nickname}님` : '님, 이런 영화는 어떠세요?'}</C.Message>
-            </C.CongratulationsContainer>
-        </C.LoginContainer>
+        <T.LoginContainer>
+            <T.TodayRecommendContainer>
+                <T.Title>오늘의 추천</T.Title>
+                <T.Divider />
+                <T.Message>{nickname ? `${nickname}님` : '님, 이런 영화는 어떠세요?'}</T.Message>
+            </T.TodayRecommendContainer>
+        </T.LoginContainer>
     );
 };
 
