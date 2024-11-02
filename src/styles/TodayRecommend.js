@@ -69,3 +69,33 @@ export const RecommendationItem = styled.div`
         background-color: #ffecc2;
     }
 `;
+
+export const ButtonContainer = styled.div`
+    display: flex; 
+    gap: 20px; 
+    margin-top: 20px; 
+`;
+
+export const Button = styled.button`
+    width: 220px;
+    height: 50px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    cursor: pointer;
+    box-shadow: 0px 5px 1px rgba(0, 0, 0, 0.2);
+    display: flex; 
+    align-items: center; 
+    justify-content: flex-start;
+    background-color: #ffffff;
+    padding-left: 10px; 
+
+
+    &:hover {
+        background-color: #C3B18D;
+    }
+
+    img {
+        margin-right: 50px; 
+    }
+`;

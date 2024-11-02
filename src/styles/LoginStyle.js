@@ -87,17 +87,18 @@ export const Input = styled.input`
 export const Button = styled.button`
     width: 220px;
     height: 50px;
-    padding: 10px 20px;
-    gap: 50px
-    background-color: #000000;
     border: none;
     border-radius: 10px;
     font-size: 1rem;
     cursor: pointer;
     box-shadow: 0px 5px 1px rgba(0, 0, 0, 0.2);
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    background-color: #ffffff;
 
     &:hover {
-        background-color: #f0f0f0;
+        background-color: #C3B18D;
     }
 `;
 

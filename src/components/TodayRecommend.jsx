@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import * as T from '@/styles/TodayRecommend';
 import { useLocation, useNavigate } from 'react-router-dom';
+import HomeIcon from "../assets/icons/Home.svg";
+import StartIcon from "../assets/icons/Start.svg";
+import ShareIcon from "../assets/icons/Share.svg";
 
 const TodayRecommend = () => {
     const location = useLocation();
@@ -51,14 +54,25 @@ const TodayRecommend = () => {
                 <T.Title>오늘의 추천</T.Title>
                 <T.Divider />
                 <T.Message>{nickname ? `${nickname}님` : '님, 이런 영화는 어떠세요?'}</T.Message>
-                <T.RecommendationsContainer>
-                    {recommendations.split('\n').map((item, index) => (
-                        <T.RecommendationItem key={index}>
-                            {item}
-                        </T.RecommendationItem>
-                    ))}
-                </T.RecommendationsContainer>
             </T.TodayRecommendContainer>
+            <T.RecommendationsContainer>
+                {recommendations.split('\n').map((item, index) => (
+                    <T.RecommendationItem key={index}>
+                        {item}
+                    </T.RecommendationItem>
+                ))}
+            </T.RecommendationsContainer>
+            <T.ButtonContainer>
+                <T.Button type="button" >
+                    <img src={HomeIcon} alt="홈 아이콘" /> 홈
+                </T.Button>
+                <T.Button type="button">
+                    <img src={StartIcon} alt="다시 아이콘" /> 다시
+                </T.Button>
+                <T.Button type="button">
+                    <img src={ShareIcon} alt="공유 아이콘" /> 공유
+                </T.Button>
+            </T.ButtonContainer>
         </T.LoginContainer>
     );
 };
