@@ -53,16 +53,7 @@ export const SearchBar = styled.div`
         font-size: 17px;
     }
 
-    button{
-
-        position: absolute;
-        top: 30px;
-        right: 48px;
-        background-color: #FFFAEC;
-        border: none;
-        border-radius: 20px;
-    }
-    img:hover {
+    button:hover {
         background-color: #E6E6E6;
         border-radius: 5px;
         transition: ease-in-out;
@@ -72,5 +63,24 @@ export const SearchBar = styled.div`
     img{
         width: 25px;
     }
+`
 
+export const SubmitBtn = styled.button`
+    position: absolute;
+    top: 30px;
+    right: 48px;
+    background-color: #FFFAEC;
+    border: none;
+    border-radius: 20px;
+`
+
+export const CongratsBtn = styled.button`
+    position: absolute;
+    top: 30px;
+    right: 92px;
+    height: 30px;
+    width: 50px;
+    background-color: #FFFAEC;
+    border: none;
+    border-radius: 20px;
 `
