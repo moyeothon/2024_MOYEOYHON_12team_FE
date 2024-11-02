@@ -48,6 +48,7 @@ function ChatApp() {
 
   const handleCloseCelebrate = () => {
     setIsCelebrating(false);
+    navigate('/recommendation')
   };
 
   return (

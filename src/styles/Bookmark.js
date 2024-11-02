@@ -12,10 +12,10 @@ export const Bookmark = styled.div`
   border-radius: 10px; 
 `;
 
-// Usage in your component
-/*
-<BookmarkContainer>
-  <Bookmark />
-  <Bookmark />
-</BookmarkContainer>
-*/
+export const Bookmark2 = styled.div`
+  width: 80px;
+  height: 131px;
+  background-color: #A99978; 
+  border-radius: 10px; 
+`;
+
