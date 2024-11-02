@@ -9,6 +9,7 @@ import P4 from '@/assets/profile_4.png';
 import P5 from '@/assets/profile_5.png';
 import NextBtn from '@/assets/NextBtn.png';
 import PrevBtn from '@/assets/PrevBtn.png';
+import StartIcon from "@/assets/icons/Start.svg"
 
 const profile = [
     { name: 'P1', src: P1 },
@@ -78,7 +79,10 @@ const Login = ({ language }) => {
                     onChange={(e) => setNickname(e.target.value)}
                     placeholder={language === 'ko' ? '닉네임을 입력해주세요.' : 'Enter your nickname.'}
                 />
-                <L.Button type="submit">{isJoining ? (language === 'ko' ? '참가하기' : 'Join Room') : (language === 'ko' ? '방 만들기' : 'Create Room')}</L.Button>
+                <L.Button type="submit">
+                    <img src={StartIcon} alt="다시 아이콘" /> 
+                    {isJoining ? (language === 'ko' ? '참가하기' : 'Join Room') : (language === 'ko' ? '방 만들기' : 'Create Room')}
+                </L.Button>
             </L.Form>
             {message && <L.Message>{message}</L.Message>}
         </L.LoginContainer>

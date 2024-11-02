@@ -1,12 +1,13 @@
 import React from 'react';
 import * as H from '@/styles/HomeStyle';
-import ChatApp from '@/components/ChatApp'
 import Header from '@/components/Header'
 import Bookmark from '@/components/Bookmark';
+import WaitingPage from '@/components/WaitingPage';
 import PlayerList from '@/components/PlayerList';
 
-const Game = ({ }) => {
 
+
+const Confirm = ({ }) => {
 
   return (
     <>
@@ -16,7 +17,7 @@ const Game = ({ }) => {
           <Header />
           <H.RowBox>
             <PlayerList />
-            <ChatApp />
+            <WaitingPage /> 
           </H.RowBox>
         </H.Tab>
       </H.Home>
@@ -24,4 +25,4 @@ const Game = ({ }) => {
   )
 }
 
-export default Game;
+export default Confirm;

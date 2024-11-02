@@ -16,10 +16,10 @@ export const RuleCard = styled.div`
     width: 385px;
     
     h2{
-        font-size: 28px;
+         font-size: 1.5rem;
     }
     h3{
-        font-size: 24px;
+        font-size: 1rem;
     }
 `
 export const ContentBox = styled.div`

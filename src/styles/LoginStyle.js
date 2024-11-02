@@ -94,11 +94,17 @@ export const Button = styled.button`
     box-shadow: 0px 5px 1px rgba(0, 0, 0, 0.2);
     display: flex; 
     align-items: center; 
-    justify-content: center; 
+    justify-content: flex-start;
     background-color: #ffffff;
+    padding-left: 10px; 
+
 
     &:hover {
         background-color: #C3B18D;
+    }
+
+    img {
+        margin-right: 50px; 
     }
 `;
 
